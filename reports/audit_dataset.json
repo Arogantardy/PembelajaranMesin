@@ -1,0 +1,158 @@
+{
+    "laporan_audit": {
+        "judul": "Laporan Audit Data Klinis Mentah - Dataset Hepatitis C",
+        "dimensi_dataset": {
+            "jumlah_baris": 615,
+            "jumlah_kolom": 14,
+            "satuan_unit": "pasien/donor"
+        },
+        "distribusi_kelas_target": {
+            "rincian_kelas": [
+                {
+                    "kelas": "0=Blood Donor",
+                    "jumlah_sampel": 533,
+                    "persentase": 86.67
+                },
+                {
+                    "kelas": "3=Cirrhosis",
+                    "jumlah_sampel": 30,
+                    "persentase": 4.88
+                },
+                {
+                    "kelas": "1=Hepatitis",
+                    "jumlah_sampel": 24,
+                    "persentase": 3.9
+                },
+                {
+                    "kelas": "2=Fibrosis",
+                    "jumlah_sampel": 21,
+                    "persentase": 3.41
+                },
+                {
+                    "kelas": "0s=suspect Blood Donor",
+                    "jumlah_sampel": 7,
+                    "persentase": 1.14
+                }
+            ],
+            "analisis_imbalance": {
+                "total_populasi_sehat": 540,
+                "persentase_populasi_sehat": 87.8,
+                "total_populasi_sakit": 75,
+                "persentase_populasi_sakit": 12.2,
+                "rasio_ketidakseimbangan_sehat_sakit": "7.2:1",
+                "tingkat_keparahan": "Severe Class Imbalance"
+            }
+        },
+        "profil_sebaran_data_kosong": {
+            "total_missing_values": 31,
+            "rincian_fitur_kosong": [
+                {
+                    "fitur": "ALB",
+                    "jumlah_kosong": 1,
+                    "persentase": 0.16
+                },
+                {
+                    "fitur": "ALP",
+                    "jumlah_kosong": 18,
+                    "persentase": 2.93
+                },
+                {
+                    "fitur": "ALT",
+                    "jumlah_kosong": 1,
+                    "persentase": 0.16
+                },
+                {
+                    "fitur": "CHOL",
+                    "jumlah_kosong": 10,
+                    "persentase": 1.63
+                },
+                {
+                    "fitur": "PROT",
+                    "jumlah_kosong": 1,
+                    "persentase": 0.16
+                }
+            ]
+        },
+        "pemeriksaan_rekaman_duplikat": {
+            "jumlah_baris_duplikat_identik": 0
+        },
+        "deteksi_outlier_laboratorium_iqr": [
+            {
+                "parameter": "ALB",
+                "nilai_min": 14.9,
+                "nilai_max": 82.2,
+                "batas_atas_iqr": 54.8,
+                "jumlah_outlier": 27
+            },
+            {
+                "parameter": "ALP",
+                "nilai_min": 11.3,
+                "nilai_max": 416.6,
+                "batas_atas_iqr": 121.5,
+                "jumlah_outlier": 10
+            },
+            {
+                "parameter": "ALT",
+                "nilai_min": 0.9,
+                "nilai_max": 325.3,
+                "batas_atas_iqr": 58.09,
+                "jumlah_outlier": 36
+            },
+            {
+                "parameter": "AST",
+                "nilai_min": 10.6,
+                "nilai_max": 324.0,
+                "batas_atas_iqr": 49.85,
+                "jumlah_outlier": 64
+            },
+            {
+                "parameter": "BIL",
+                "nilai_min": 0.8,
+                "nilai_max": 254.0,
+                "batas_atas_iqr": 20.05,
+                "jumlah_outlier": 47
+            },
+            {
+                "parameter": "CHE",
+                "nilai_min": 1.42,
+                "nilai_max": 16.41,
+                "batas_atas_iqr": 13.57,
+                "jumlah_outlier": 24
+            },
+            {
+                "parameter": "CHOL",
+                "nilai_min": 1.43,
+                "nilai_max": 9.67,
+                "batas_atas_iqr": 8.23,
+                "jumlah_outlier": 12
+            },
+            {
+                "parameter": "CREA",
+                "nilai_min": 8.0,
+                "nilai_max": 1079.1,
+                "batas_atas_iqr": 119.5,
+                "jumlah_outlier": 12
+            },
+            {
+                "parameter": "GGT",
+                "nilai_min": 4.5,
+                "nilai_max": 650.9,
+                "batas_atas_iqr": 76.95,
+                "jumlah_outlier": 65
+            },
+            {
+                "parameter": "PROT",
+                "nilai_min": 44.8,
+                "nilai_max": 90.0,
+                "batas_atas_iqr": 84.55,
+                "jumlah_outlier": 20
+            }
+        ],
+        "analisis_potensi_kebocoran_data": {
+            "status_data_leakage": "Terdeteksi Peringatan",
+            "fitur_bermasalah": "Unnamed: 0",
+            "justifikasi_klinis_komputasional": "Kolom indeks mentah berkorelasi langsung dengan urutan pengelompokan kelas pada file CSV. Jika tidak dihapus, model Decision Tree akan menghafal nomor urut baris sebagai batas klasifikasi palsu.",
+            "tindakan_mitigasi": "WAJIB menghapus (drop) kolom ini pada fase awal data pipeline sebelum melakukan splitting data."
+        }
+    }
+}
